@@ -6,7 +6,6 @@ import Info from "./Info";
 import { X } from "lucide-react";
 
 const PokemonDetail = ({ open, active }) => {
-  
     const { activePokemon, setActivePokemon } = active;
     const { isOpen, setIsOpen } = open;
     useEffect(() => {
@@ -35,7 +34,7 @@ const PokemonDetail = ({ open, active }) => {
                     <X />
                 </button>
                 <img
-                    style={{ maxWidth: pokemonImg ?? "150px" }}
+                    style={{ maxWidth: pokemonImg === null && "200px" }}
                     src={pokemonImg || "/default.png"}
                 />
 

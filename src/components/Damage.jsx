@@ -28,23 +28,27 @@ const Damage = ({ types }) => {
 
     return (
         <div className="damage__container">
-            <div className="weak">
+            <div className="weak flex">
                 <p
                     style={{
                         "--bg-type3": `var(--type-${types?.[0].type.name})`
                     }}
                 >
-                    Weak
+                    Weak against
                 </p>
-                <div className="icon-list">
+                <div className="icon-list flex">
                     {results && weakType("double_damage_from")}
                 </div>
             </div>
-            <div className="effective">
-                <p style={{
+            <div className="effective flex">
+                <p
+                    style={{
                         "--bg-type3": `var(--type-${types?.[0].type.name})`
-                    }}>Effective</p>
-                <div className="icon-list">
+                    }}
+                >
+                    Effective against
+                </p>
+                <div className="icon-list flex">
                     {results && weakType("double_damage_to")}
                 </div>
             </div>

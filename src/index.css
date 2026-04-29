@@ -289,12 +289,13 @@ input {
         rgb(15, 15, 15),
         hsl(var(--bg-type2))
     );
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .pokemon__detail img {
     max-width: 300px;
     width: 100%;
+    height: auto;
 }
 
 .btn-close {
@@ -336,6 +337,7 @@ input {
     align-items: center;
     justify-content: space-between;
     height: 50px;
+    text-align: center;
 }
 
 .info div h5 {
@@ -403,10 +405,20 @@ input {
     height: 100%;
     width: 80px;
     text-align: center;
+    background: rgb(20, 20, 20);
+    color: white;
+    font-family: var(--poppins);
+    border-radius: 4px;
+    outline: none;
+    border: 2px solid rgb(40, 40, 40);
+    transition: 0.3s;
 }
 
 .pagination button {
     padding: 0 1rem;
+    background: rgb(0, 33, 88);
+    border-radius: 4px;
+    color: white;
 }
 
 .damage__container {
@@ -419,22 +431,17 @@ input {
 
 .effective,
 .weak {
-    display: flex;
-    align-items: stretch;
-    border-radius: 6px;
     font-family: var(--poppins);
-    height: 40px;
+    flex-direction: column;
 }
 
 .icon-list {
-    border-radius: 0 6px 6px 0;
-    display: flex;
     overflow: scroll;
     width: 100%;
     gap: 0.5rem;
-    padding-inline: 0.5rem;
+    padding-block: 0.8rem;
     background: rgba(0, 0, 0, 0.7);
-    direction: rtl;
+    border-radius: 0 0 6px 6px;
 }
 
 .effective img,
@@ -444,21 +451,30 @@ input {
 }
 .effective p,
 .weak p {
-    display: flex;
-    align-items: center;
     width: 120px;
     padding-inline: 1rem;
-    border-radius: 6px 0 0 6px;
     font-size: 0.7rem;
     color: white;
     font-weight: 600;
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 0;
     background: var(--bg-type3);
+    border-radius: 6px 6px 0 0;
 }
 .weak p {
     background: rgb(104, 0, 0);
 }
 .effective p {
     background: rgb(0, 82, 31);
+}
+
+.pagination input[type="text"]:focus {
+    border: 2px solid rgb(62, 62, 62);
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
 }
 
 .modal-container.modal-active .pokemon__detail {
@@ -469,6 +485,15 @@ input {
     .search__input {
         gap: 0.8rem;
         padding: 0 1.2rem;
+    }
+
+    .effective img,
+    .weak img {
+        width: 30px;
+        height: auto;
+    }
+    .icon-list {
+      gap: .8rem;
     }
 }
 @media screen and (max-width: 800px) {

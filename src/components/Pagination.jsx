@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const Pagination = ({ data, url, setUrl, page }) => {
     const [value, setValue] = useState("");
@@ -21,31 +22,37 @@ const Pagination = ({ data, url, setUrl, page }) => {
         setCurrentPage(prev => prev + int);
         setUrl(task);
     };
-    return<>
-        {data && <div className="pagination flex">
-            <button
-                disabled={data?.previous === null}
-                onClick={() => handleNav(-1, data?.previous)}
-            >
-                Prev
-            </button>
-            <form onSubmit={handleSubmit}>
-                <input
-                    onChange={e => setValue(e.target.value)}
-                    value={value}
-                    type="text"
-                    placeholder={`${currentPage} / ${totalPage}`}
-                />
-            </form>
-            <button
-                disabled={data?.next === null || currentPage === totalPage}
-                onClick={() => handleNav(1, data?.next)}
-            >
-                Next
-            </button>
-        </div>}
-    
-    </>
+    return (
+        <>
+            {data && (
+                <div className="pagination flex">
+                    <button className="flex"
+                        disabled={data?.previous === null}
+                        onClick={() => handleNav(-1, data?.previous)}
+                    >
+                        <ChevronLeft />
+                    </button>
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            onChange={e => setValue(e.target.value)}
+                            value={value}
+                            type="text"
+                            placeholder={`${currentPage} / ${totalPage}`}
+                        />
+                    </form>
+                    <button
+                        className="flex"
+                        disabled={
+                            data?.next === null || currentPage === totalPage
+                        }
+                        onClick={() => handleNav(1, data?.next)}
+                    >
+                        <ChevronRight />
+                    </button>
+                </div>
+            )}
+        </>
+    );
 };
 
 export default Pagination;
