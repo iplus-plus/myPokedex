@@ -20,7 +20,8 @@ const App = () => {
     } = useQuery({
         queryKey: ["pokemons", url],
         queryFn: () => fetchData(url),
-        keepPreviousData: true
+        keepPreviousData: true,
+        staleTime: Infinity
     });
 
     const { data: single } = useQuery({
@@ -35,8 +36,6 @@ const App = () => {
     const singleData = [single?.data] || [];
     const showData = debounced ? singleData : listData;
 
-    
-
     return (
         <>
             <PokemonDetail
@@ -50,6 +49,7 @@ const App = () => {
                         setUrl={setUrl}
                         debounced={debounced}
                         setDebounced={setDebounced}
+                        currentPage={currentPage}
                     />
 
                     <ul
@@ -78,7 +78,12 @@ const App = () => {
                     </ul>
                 </div>
                 {!debounced && (
-                    <Pagination page={{currentPage, setCurrentPage}} data={pokemons} setUrl={setUrl} url={url} />
+                    <Pagination
+                        page={{ currentPage, setCurrentPage }}
+                        data={pokemons}
+                        setUrl={setUrl}
+                        url={url}
+                    />
                 )}
             </div>
         </>

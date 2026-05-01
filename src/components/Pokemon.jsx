@@ -17,12 +17,10 @@ const Pokemon = ({ pokemon, active, setIsOpen, debounced }) => {
         setIsOpen(true);
     };
     const pokemonImg = data?.sprites?.other?.home?.front_default;
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
+
     return (
         <>
-            <div 
+            <div
                 onClick={handleClick}
                 className={`pokemon ${!isLoading && "show-pokemon"}`}
             >
